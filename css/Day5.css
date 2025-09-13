@@ -1,0 +1,27 @@
+p{
+    color: red;
+    background-color: aqua;
+}
+.container{
+    background-color: blue;
+    height: 200px;
+    background-image: url("../assets/Image.jpeg");
+    color: white; 
+    background-size: cover;
+    background-position: 30px 40px;
+    opacity: 0.5;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: #ff5201;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 70px;
+    padding-right: 70px;
+    border: 10px solid black;
+    border-radius: 10px;
+    margin-bottom: 100px;
+    
+}

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* types of css 
+    1.inline css
+    2.internal.css
+    3.external.css
+*/
+
+
+/* selectors
+     4.universal *
+     3.element
+     1.class
+     2.id #
+     
+     
+*/
+*{
+    color: black;
+}
+
+.para-1{
+    color:darkblue;
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    font-weight:100;
+    font-style:oblique;
+    line-height: 40px;
+    text-align:justify;
+    text-decoration:dashed underline;
+    text-transform:uppercase;
+    
+
+}
+
+#para-1_id{
+    color: red;
+}
+
+p{
+    color: green
+}
