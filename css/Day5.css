@@ -11,7 +11,6 @@ p{
     background-position: 30px 40px;
     opacity: 0.5;
 }
-
 .box{
     width: 200px;
     height: 200px;
@@ -22,6 +21,5 @@ p{
     padding-right: 70px;
     border: 10px solid black;
     border-radius: 10px;
-    margin-bottom: 100px;
-    
+    margin: 50px;   
 }
