@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Day-10</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div class="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 bg-black px-5 py-5">
-        <div class="bg-blue-500 w-[100px] h-[100px]">Content</div>
-        <div class="bg-red-500 w-[100px] h-[100px]">Content</div>
-        <div class="bg-green-500 w-[100px] h-[100px]">Content</div>
-        <div class="bg-yellow-300 w-[100px] h-[100px]">Content</div>
-        <div class="bg-orange-500 w-[100px] h-[100px]">Content</div>
-        <div class="bg-pink-500 w-[100px] h-[100px]">Content</div>
-        <div class="bg-slate-500 w-[100px] h-[100px]">Content</div>
-        <div class="bg-amber-500 w-[100px] h-[100px]">Content</div>
-        <div class="bg-purple-500 w-[100px] h-[100px]">Content</div>
-        <div class="bg-lime-500 w-[100px] h-[100px]">Content</div>
-        <div class="bg-rose-500 w-[100px] h-[100px]">Content</div>
+  </head>
+  <body>
+    <div>
+      <div class="grid grid-cols-4">
+        <div class="bg-blue-500">Content-1</div>
+        <div class="bg-red-500">Content-2</div>
+        <div class="col-span-2 bg-green-500">Content-3</div>
+        <div class="col-span-2 bg-yellow-300">Content-4</div>
+        <div class="bg-orange-500">Content-5</div>
+        <div class="bg-pink-500">Content-6</div>
+      </div>
     </div>
-</body>
+    <section>
+      <div class="2xl:container mx-auto">
+        <div class="w-[90%] my-5 mx-auto grid grid-cols-1 lg:grid-cols-4">
+          <div class="bg-blue-500">Content-1</div>
+          <div class="bg-red-500">Content-1</div>
+          <div class="bg-green-500">Content-1</div>
+          <div class="bg-yellow-500">Content-1</div>
+          <div class="bg-black">Content-1</div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
