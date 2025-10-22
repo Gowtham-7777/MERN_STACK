@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* #count{
+            color: black;
+        } */
+    </style>
+</head>
+<body>
+    <div class="flex flex-col justify-center items-center h-screen gap-5">
+            <h1 class="text-[68px] font-bold">Counter</h1>
+            <p id="count" class="text-[88px] font-bold">0<p>
+            <div class="flex items-center gap-6">
+                <button id="des" class="border- border-black rounded-lg shadow-md">DECREASE</button>
+                <button id="res" class="border-black shadow-md">RESET</button>
+                <button id="inc" class=" border-black shadow-md">INCREASE</button>
+            </div>
+    </div>
+    <script>
+        var count = document.getElementById('count');
+        var des = document.getElementById('des');
+        var res = document.getElementById('res');
+        var inc = document.getElementById('inc');
+
+        function updateColor(){
+            var value = parseInt(count.textContent);
+            if(value > 0){
+                count.style.color = "green";
+            }else if(value < 0){
+                count.style.color = "red";
+            }else{
+                count.style.color = "black";
+            }
+        }
+        
+        inc.addEventListener("click",() => {
+            count.textContent = parseInt(count.textContent) + 1;
+            updateColor();
+        })
+        des.addEventListener("click",() => {
+            count.textContent = parseInt(count.textContent) - 1;
+            updateColor();
+        })
+        res.addEventListener("click",() => {
+            count.textContent = 0;
+            updateColor();
+        })
+        console.log(typeof count.textContent);
+    </script>
+</body>
+</html>
