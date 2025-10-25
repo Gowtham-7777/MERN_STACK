@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+
+    <!-- Tailwind Css  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <!-- Navbar Section Start  -->
+    <div class="2xl:container mx-auto">
+        <div class="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 items-center">
+            <div class="flex justify-between items-center py-3">
+                <h1 class="text-2xl font-bold">Logo</h1>
+                <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-menu-icon lucide-menu md:hidden" id="menu_icon">
+                        <path d="M4 5h16" />
+                        <path d="M4 12h16" />
+                        <path d="M4 19h16" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-x-icon lucide-x hidden md:hidden" id="cross_icon">
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
+                    </svg>
+                </div>
+            </div>
+            <div class=" py-4 hidden md:block" id="nav_list">
+                <ul class="flex flex-col items-center gap-5 md:flex-row md:justify-end md:items-center ">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Projects</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar Section End -->
+    
+    <!-- Script start -->
+    <script>
+        var menu_icon = document.getElementById("menu_icon")
+        var cross_icon = document.getElementById("cross_icon")
+        var nav_list = document.getElementById("nav_list")
+
+        menu_icon.addEventListener("click", ()=>{
+            console.dir(nav_list);
+            // add , remove , toggle
+            nav_list.classList.remove("hidden");
+            cross_icon.classList.remove("hidden");
+            menu_icon.classList.add("hidden");
+        });
+
+        cross_icon.addEventListener("click", ()=>{
+            console.dir(nav_list);
+            nav_list.classList.add("hidden");
+            cross_icon.classList.add("hidden");
+            menu_icon.classList.remove("hidden");
+        });
+    </script>
+    <!-- Script end -->
+</body>
+</html>
