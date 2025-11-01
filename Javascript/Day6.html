@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- tailwind css line  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--FireBase SDK-->
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="2xl:container mx-auto bg-gray-800">
+      <div class="w-[90%] mx-auto flex justify-center items-center h-screen">
+        <div
+          class="p-8 bg-white/20 rounded-lg border shadow-slate-700 shadow-2xl w-[400px]"
+        >
+          <h1 class="text-center font-semibold text-[32px] text-white">
+            LOGIN
+          </h1>
+          <hr />
+          <form class="flex flex-col gap-7 mt-5 space-y-1" id="form">
+            <div>
+              <label class="text-white font-medium" for="email">EMAI:</label
+              ><br />
+              <input
+                class="px-2 py-2 rounded-md w-full"
+                type="email"
+                name="email"
+                id="email"
+                required
+              />
+              <p class="text-red-600 text-sm" id="errEmail"></p>
+            </div>
+
+            <div>
+              <label class="text-white font-medium" for="password"
+                >PASSWORD:</label
+              ><br />
+              <input
+                class="px-2 py-2 rounded-md w-full"
+                type="text"
+                name="password"
+                id="password"
+                required
+              />
+              <p class="text-red-600 text-sm" id="errPass"></p>
+            </div>
+
+            <div class="flex justify-center">
+              <button
+                class="px-6 py-2 rounded-lg bg-green-500 text-white w-full"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- scrpt  -->
+    <script>
+      var form = document.getElementById("form");
+      var email = document.getElementById("email");
+      var password = document.getElementById("password");
+      var errEmail = document.getElementById("errEmail");
+      var errPass = document.getElementById("errPass");
+
+      function saveData(email, password) {
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDjahhxJpq-nRcS067WxVhHQvdRmw7Jxg8",
+          authDomain: "formvalidation-1.firebaseapp.com",
+          databaseURL:
+            "https://formvalidation-1-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "formvalidation-1",
+          storageBucket: "formvalidation-1.firebasestorage.app",
+          messagingSenderId: "926066329731",
+          appId: "1:926066329731:web:6aaca856f93f9b3817f3b6",
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.database().ref("ReqForm");
+
+        db.push({
+          email: email,
+          password: password,
+        });
+      }
+
+      email.addEventListener("input", (e) => {
+        console.log(e.target.value);
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (e.target.value == "") {
+          errEmail.textContent = "Required";
+        } else if (!e.target.value.match(emailRegex)) {
+          errEmail.textContent = "Try using the format yourname@email.com";
+        } else {
+          errEmail.textContent = "";
+        }
+      });
+
+      password.addEventListener("input", (e) => {
+        console.log(e.target.value);
+        const passRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+        const digitRegex = /(?=.*?[0-9])/;
+        const lowerCaseRegex = /(?=.*?[a-z])/;
+        const upperCaseRegex = /(?=.*?[A-Z])/;
+        const specialCharRegex = /(?=.*?[!@#$%^&*])/;
+        minLengthRegex = /(?=.{8,})/;
+
+        if (e.target.value == "") {
+          errPass.textContent = "Required";
+        } else if (!e.target.value.match(upperCaseRegex)) {
+          errPass.textContent =
+            "Password must contain at least one uppercase letter";
+        } else if (!e.target.value.match(lowerCaseRegex)) {
+          errPass.textContent =
+            "Password must contain at least one lowercase letter";
+        } else if (!e.target.value.match(digitRegex)) {
+          errPass.textContent = "Password must contain at least one digit";
+        } else if (!e.target.value.match(specialCharRegex)) {
+          errPass.textContent =
+            "Password must contain at least one special character";
+        } else if (!e.target.value.match(minLengthRegex)) {
+          errPass.textContent = "Password must be at least 8 characters long";
+        } else {
+          errPass.textContent = "";
+        }
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        var valid = advancedValidation(email.value, password.value);
+        if(valid){
+        saveData(email.value, password.value);
+        }
+        //    email.value = "";
+        //    password.value = "";
+      });
+
+      function advancedValidation(email, password) {
+        const emailRegex = /^\S+@\S+\.\S+$/;
+        const passRegex =
+          /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+        
+          const valid = true;
+        if (email.match(emailRegex)) {
+          errEmail.textContent = "";
+          console.log(`${email} true`);
+        } else {
+          console.log("false");
+          errEmail.textContent = "Try using the format yourname@email.com";
+          valid = false;
+        }
+
+        if (password.match(passRegex)) {
+          errPass.textContent = "";
+          console.log(`${password} true`);
+        } else {
+          console.log("false");
+          errPass.textContent = "Try using the format Coding@123";
+          valid = false;
+        }
+        return valid;
+      }
+    </script>
+  </body>
+</html>
